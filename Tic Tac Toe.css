@@ -1,0 +1,141 @@
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+.card-container {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: repeat(3, auto);
+}
+
+.card {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+  background-color: white;
+  border: 1px solid black;
+  cursor: pointer;
+  display: flex;
+}
+
+.card:first-child,
+.card:nth-child(2),
+.card:nth-child(3) {
+  border-top: none;
+}
+
+.card:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.card:nth-child(3n + 3) {
+  border-right: none;
+}
+
+.card:last-child,
+.card:nth-child(8),
+.card:nth-child(7) {
+  border-bottom: none;
+}
+
+.card.x:hover,
+.card.circle:hover {
+  cursor: not-allowed;
+}
+
+.card.x::before,
+.card.x::after,
+.card.circle::before,
+.card.circle::after {
+  background-color: black;
+}
+
+.card-container.x .card:not(.x):not(.circle):hover::before,
+.card-container.x .card:not(.x):not(.circle):hover::after,
+.card-container.circle .card:not(.x):not(.circle):hover::before {
+  background-color: lightgray;
+}
+
+
+.card.x::before,
+.card.x::after,
+.card-container.x .card:not(.x):not(.circle):hover::before,
+.card-container.x .card:not(.x):not(.circle):hover::after {
+  position: absolute;
+  content: '';
+  height: 80px;
+  width: 15px;
+}
+
+.card.x::before,
+.card-container.x .card:not(.x):not(.circle):hover::before {
+  transform: rotate(45deg);
+}
+
+.card.x::after,
+.card-container.x .card:not(.x):not(.circle):hover::after {
+  transform: rotate(-45deg);
+}
+
+.card.circle::before,
+.card.circle::after,
+.card-container.circle .card:not(.x):not(.circle):hover::before,
+.card-container.circle .card:not(.x):not(.circle):hover::after {
+  content: '';
+  border-radius: 50%;
+  position: absolute;
+}
+
+.card.circle::before,
+.card-container.circle .card:not(.x):not(.circle):hover::before {
+  height: 80px;
+  width: 80px;
+}
+
+.card.circle::after,
+.card-container.circle .card:not(.x):not(.circle):hover::after {
+  height:50px;
+  width: 50px;
+  background-color: white;
+}
+
+.wining-message-container {
+  display: none;
+  position: fixed;
+  top: 25vh;
+  bottom: 25vh;
+  left: 25vw;
+  right: 25vw;
+  border-radius: 20px;
+  border: 3px solid black;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 50px;
+  color: black;
+  background-color: rgba(245, 245, 245, .98);
+}
+
+.restart-button {
+  font-size: 25px;
+  padding: 12px 24px;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.restart-button:hover {
+  color: white;
+  border-color: white;
+  background-color: black;
+}
+
+.wining-message-container.show {
+  display: flex;
+}
